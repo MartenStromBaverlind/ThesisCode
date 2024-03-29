@@ -1,15 +1,8 @@
 #inputs can be "correct" or "wrong" 
-____
+
 #input can be "correct" = there exists an implementation of algorithm (based on the "textual specifications") that does not throw an exception, and possibly gives the correct output
 #input can be "wrong" = there NOT exists an implementation of algorithm (based on the "textual specifications") that does not throw an exceptions, and at the same time provides correct output with "correct" inputs
 
-#out = function(input)
-#try
-#	out = algorithm(input)
-#catch E
-#	rethrow E
-
-#____
 #[*] function can be "erroneous" or "healed"
 #Function can be "erroneous" = for inputs that are "correct", it may happen (depending on the input, always correct) that the code throws an exeception (crashes)
 #def. "errorInputs" = "correct inputs that provoke execption in the erroneous function"
@@ -21,10 +14,14 @@ ____
 #For us, the healed code should provide the same output of the "erroneous-code"
 
 
-def read_Leetcode_Problem(): # Ideally automize through leetcode api - hard?
-    print ("")
-           
-
+def read_Leetcode_Problem(): # Ideally automize through leetcode api 
+    fd = open("problemcodes.txt", "r")
+    problem = fd.read()
+    fd = open("probleminputs.txt", "r")
+    input = fd.read() 
+    fd = open("problemoutputs.txt", "r")
+    output = fd.read()
+    run_Test_Code(problem,input,output)
 
 
 def generate_Chatgpt_Prompt(): # Example, chatgpt Give me the code without comments so i can easily save and run it
@@ -33,7 +30,7 @@ def generate_Chatgpt_Prompt(): # Example, chatgpt Give me the code without comme
 
 
 
-def send_Chatgpt_Request():  # Chatgpt api send prompt and fetch answer from chatgpt - easy
+def send_Chatgpt_Request():  # Chatgpt api send prompt and fetch answer from chatgpt 
     print ("")
 
 
@@ -44,15 +41,20 @@ def send_Chatgpt_Request():  # Chatgpt api send prompt and fetch answer from cha
 
 
 
-def run_Test_Code(): #Ideally execute locally  - hard
+def run_Test_Code(problem,input,output): #Ideally execute locally  - hard
+    print (problem)
+    print (input)
+    print (output)
+    # Create a skeleton cpp file with main function
+    # Edit the skeleton with the "solution" from problemcodes.txt by inserting it in the wrapping main function
+    # Run the cpp program with the input from probleminput.txt
+    # Check for runtime error and if the output equals problemoutputs.txt value
     
-    
-    
-    
+
     #Problem File 
     #Input File
     #Expected Output File
-    print ("")
+ 
 
 
 # Run the code function locally with the input and check with the expected output file 
@@ -62,7 +64,7 @@ def run_Test_Code(): #Ideally execute locally  - hard
 
 
 def main():
-    print ("a")
+   read_Leetcode_Problem()
 
 main()
 
