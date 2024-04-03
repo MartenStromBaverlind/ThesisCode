@@ -13,14 +13,49 @@
 	
 #For us, the healed code should provide the same output of the "erroneous-code"
 
+import subprocess 
+  
+# Command to compile the C++ program 
+def compile_and_run_cpp_program():
+    compile_command = ["g++", "wrapper.cpp", "-o", "wrapper"] 
+    
+    # Command to execute the compiled program 
+    run_command = ["./wrapper"] 
+    
+    # Compile the C++ program 
+    compile_process = subprocess.run(compile_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
+ 
+# Check if the compilation was successful 
+    if compile_process.returncode == 0: 
+        print("Compilation successful.") 
+        # Run the compiled program 
+        run_process = subprocess.run(run_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
+    # Get the output and error messages from the program 
+        output = run_process.stdout.decode() 
+        error = run_process.stderr.decode() 
+        
+        # Print the output and error messages 
+        print("Output:") 
+        print(output) 
+        
+        print("Error:") 
+        print(error) 
+    else: 
+        # Print the compilation error messages 
+        print("Compilation failed.") 
+        print(compile_process.stderr.decode()) 
+
 
 def read_Leetcode_Problem(): # Ideally automize through leetcode api 
     fd = open("problemcodes.txt", "r")
     problem = fd.read()
+    fd.close()
     fd = open("probleminputs.txt", "r")
     input = fd.read() 
+    fd.close()
     fd = open("problemoutputs.txt", "r")
     output = fd.read()
+    fd.close()
     run_Test_Code(problem,input,output)
 
 
@@ -42,9 +77,10 @@ def send_Chatgpt_Request():  # Chatgpt api send prompt and fetch answer from cha
 
 
 def run_Test_Code(problem,input,output): #Ideally execute locally  - hard
-    print (problem)
-    print (input)
-    print (output)
+ 
+    compile_and_run_cpp_program()
+    print ("ggg")
+
     # Create a skeleton cpp file with main function
     # Edit the skeleton with the "solution" from problemcodes.txt by inserting it in the wrapping main function
     # Run the cpp program with the input from probleminput.txt
