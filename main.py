@@ -14,49 +14,47 @@
 #For us, the healed code should provide the same output of the "erroneous-code"
 
 import subprocess 
-  
-# Command to compile the C++ program 
+import os
+from openai import OpenAI
+os.environ["OPENAI_API_KEY"] = open("API_KEY","r").read()
+
+#API_KEY = open("API_KEY","r").read()
+#openai.api_key = API_KEY
+
+
 def compile_and_run_cpp_program():
     compile_command = ["g++", "wrapper.cpp", "-o", "wrapper"] 
     
-    # Command to execute the compiled program 
     run_command = ["./wrapper"] 
     
-    # Compile the C++ program 
     compile_process = subprocess.run(compile_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
  
-# Check if the compilation was successful 
     if compile_process.returncode == 0: 
         print("Compilation successful.") 
-        # Run the compiled program 
         run_process = subprocess.run(run_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
-    # Get the output and error messages from the program 
         output = run_process.stdout.decode() 
         error = run_process.stderr.decode() 
         
-        # Print the output and error messages 
         print("Output:") 
         print(output) 
         
         print("Error:") 
         print(error) 
     else: 
-        # Print the compilation error messages 
         print("Compilation failed.") 
         print(compile_process.stderr.decode()) 
 
 
-def read_Leetcode_Problem(): # Ideally automize through leetcode api 
-    fd = open("problemcodes.txt", "r")
-    problem = fd.read()
-    fd.close()
-    fd = open("probleminputs.txt", "r")
-    input = fd.read() 
-    fd.close()
-    fd = open("problemoutputs.txt", "r")
-    output = fd.read()
-    fd.close()
-    run_Test_Code(problem,input,output)
+def read_Leetcode_Problem(): 
+    with open("problemcodes.txt") as file_1, open("probleminputs.txt") as file_2, open("problemoutputs.txt") as file_3:
+        problem = file_1.read()
+        input   = file_2.read()
+        output  = file_3.read()
+        print("input:" + input + "\noutput:" + output)
+ 
+    return problem,input,output
+   # run_Test_Code(problem,input,output)
+
 
 
 def generate_Chatgpt_Prompt(): # Example, chatgpt Give me the code without comments so i can easily save and run it
@@ -65,8 +63,18 @@ def generate_Chatgpt_Prompt(): # Example, chatgpt Give me the code without comme
 
 
 
-def send_Chatgpt_Request():  # Chatgpt api send prompt and fetch answer from chatgpt 
-    print ("")
+def send_Chatgpt_Request():  # Chatgpt api send prompt and fetch answer from chatgpt
+  client = OpenAI()
+  
+  completion = client.chat.completions.create(
+  model="gpt-3.5-turbo",
+  messages=[
+    {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
+  ]
+)
+
+  print(completion.choices[0].message)
+
 
 
 # We attempt one healing iteration of the code
@@ -76,7 +84,7 @@ def send_Chatgpt_Request():  # Chatgpt api send prompt and fetch answer from cha
 
 
 
-def run_Test_Code(problem,input,output): #Ideally execute locally  - hard
+def run_Test_Code(problem,input,output): 
  
     compile_and_run_cpp_program()
     print ("ggg")
@@ -100,8 +108,8 @@ def run_Test_Code(problem,input,output): #Ideally execute locally  - hard
 
 
 def main():
-   read_Leetcode_Problem()
-
+ problem,input,output = read_Leetcode_Problem()
+ send_Chatgpt_Request()  
 main()
 
 
