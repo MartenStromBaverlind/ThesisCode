@@ -15,25 +15,29 @@
 
 import subprocess 
 import os
+import shutil
 from openai import OpenAI
 os.environ["OPENAI_API_KEY"] = open("API_KEY","r").read()
 
 #API_KEY = open("API_KEY","r").read()
 #openai.api_key = API_KEY
-
+need_reset = False
 
 def compile_and_run_cpp_program():
-    compile_command = ["g++", "wrapper.cpp", "-o", "wrapper"] 
+    compile_command = ["g++", "cpp_program.cpp", "-o", "cpp_program"] 
     
-    run_command = ["./wrapper"] 
+    run_command = ["./cpp_program"] 
     
     compile_process = subprocess.run(compile_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
- 
+    print("Compiling cpp program...") 
+
     if compile_process.returncode == 0: 
         print("Compilation successful.") 
         run_process = subprocess.run(run_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
         output = run_process.stdout.decode() 
-        error = run_process.stderr.decode() 
+       
+        print("Return code: ", run_process.returncode)
+        error  = run_process.stderr.decode() 
         
         print("Output:") 
         print(output) 
@@ -50,76 +54,68 @@ def read_Leetcode_Problem():
         problem = file_1.read()
         input   = file_2.read()
         output  = file_3.read()
-        print("input:" + input + "\noutput:" + output)
- 
+        file_1.close()
+        file_2.close()
+        file_3.close()
     return problem,input,output
-   # run_Test_Code(problem,input,output)
+
+
+def generate_Chatgpt_Prompt(problem,input,output): 
+  background = "I'm getting runtime error in my c++ program, could you identify and fix the problem for me? The response should include "
+  requirement = "The solution should be able to call the function within the solution class with the following inputs : " + input + " and the corresponding outputs should be: " + output + "Also, I dont wan't any comments"
+  current_solution = "This is my current solution that does not work " + problem + " The response should contain everything needed so that the solution can be compiled and run instantly" 
+  return background + requirement + current_solution  
 
 
 
-def generate_Chatgpt_Prompt(): # Example, chatgpt Give me the code without comments so i can easily save and run it
-    print ("")
 
-
-
-
-def send_Chatgpt_Request():  # Chatgpt api send prompt and fetch answer from chatgpt
+def send_Chatgpt_Request(prompt):  
   client = OpenAI()
-  
-  completion = client.chat.completions.create(
+  response = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
-    {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
+    {"role": "user", "content": prompt}
   ]
 )
-
-  print(completion.choices[0].message)
-
-
-
-# We attempt one healing iteration of the code
-# Does it still have runtime error? 
-    # Yes - Healing failed
-    # No - How accurate was the healed code? 3/4 test cases = 75% healed
+  with open("solution.txt","w") as file:
+      file.write(response.choices[0].message.content)
+  file.close()    
 
 
-
-def run_Test_Code(problem,input,output): 
- 
-    compile_and_run_cpp_program()
-    print ("ggg")
-
-    # Create a skeleton cpp file with main function
-    # Edit the skeleton with the "solution" from problemcodes.txt by inserting it in the wrapping main function
-    # Run the cpp program with the input from probleminput.txt
-    # Check for runtime error and if the output equals problemoutputs.txt value
-    
-
-    #Problem File 
-    #Input File
-    #Expected Output File
- 
-
-
-# Run the code function locally with the input and check with the expected output file 
+def write_problem_to_cpp_program(filename,string_to_write,need_reset):
+    if (need_reset): # Check if we need to reset the cpp_program (has run atleast once)
+        shutil.copyfile('cpp_skeleton.cpp', 'cpp_program.cpp') 
         
-# test case input [4,3,2] expected output [2,3,4] 
+    with open(filename, "r") as file:
+        lines = file.readlines()
 
+    start_index = -1
+    end_index = -1
 
+    # Find the start and end index of the main function
+    for i, line in enumerate(lines):
+        if line.strip() == "int main() {":
+            start_index = i + 1  # Start writing after the function declaration
+        elif start_index != -1 and line.strip() == "}":
+            end_index = i
+            break
+
+    if start_index == -1 or end_index == -1:
+        print("Main function not found in", filename)
+        return
+
+    # Write the string to the file within the main function
+    lines.insert(start_index, f'{string_to_write} \n')
+
+    # Write the modified content back to the file
+    with open(filename, "w") as file:
+        file.writelines(lines)
 
 def main():
  problem,input,output = read_Leetcode_Problem()
- send_Chatgpt_Request()  
+ write_problem_to_cpp_program("cpp_program.cpp",problem,False)
+ #compile_and_run_cpp_program()
+ prompt = generate_Chatgpt_Prompt(problem,input,output)
+ send_Chatgpt_Request(prompt)  
+
 main()
-
-
-# Create a dummy cpp template to encapsulate problems
-# Save leetcode problem file as cpp file
-
-
-
-# 1 Read leetcode problem from file - store 
-# 2 Create prompt (Template) (Customize)?
-# 3 Make chatgpt call with prompt, send and retrieve
-# 3 Submit to leetcode                      -- Look for api leetcode submission, else manually submit and collect result
-# 4 ChatGPT api call with prompt 

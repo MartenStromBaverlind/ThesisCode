@@ -1,3 +1,8 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
 struct ListNode {
       int val;
       ListNode *next;
@@ -30,3 +35,12 @@ ListNode* rotateRight(ListNode* head, int k) {
         return head;
     }
 }};
+ 
+
+
+
+    
+    return 0;
+}
+    
+
