@@ -1,0 +1,23 @@
+{
+"problems": [
+        {
+            "id": 1,
+            "name": "RotateList-61",
+            "params": [
+                2,
+                4
+            ],
+            "inputs": [
+                [1,2,3,4,5],
+                [0,1,2]
+            ],
+            "outputs": [
+                [4,5,1,2,3],
+                [2,0,1]
+            ],
+            "struct": "struct ListNode {\n    int val;\n    ListNode *next;\n    ListNode() : val(0), next(nullptr) {}\n    ListNode(int x) : val(x), next(nullptr) {}\n    ListNode(int x, ListNode *next) : val(x), next(next) {}\n};" ,    
+            "code": "class Solution {\n    public:\n    ListNode* rotateRight(ListNode* head, int k) {\n\n        if(head==NULL) return NULL;\n        if(head->next==NULL) return head;\n        vector<ListNode*> v;\n        ListNode* temp=head;\n\n        while(temp){\n            v.push_back(temp);\n            temp=temp->next;\n        }\n        int n=v.size()-1;\n        int indx=abs(n-k)+1;\n\n        if(indx==0) return head;\n        else{\n            v[indx-1]->next=NULL;\n            v[n]->next=head;\n            head=v[indx];\n            return head;\n        }\n    }\n};"     
+        }
+       
+    ]
+}
