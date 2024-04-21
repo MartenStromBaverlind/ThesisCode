@@ -22,7 +22,7 @@ def compile_and_run_cpp_program():
         print("Compilation failed.") 
         print(compile_process.stderr.decode()) 
 
-def read_Leetcode_Problem(): #TODO store problems in one JSON 
+def read_Leetcode_Problem():
     with open("problemcodes.txt") as file_1, open("probleminputs.txt") as file_2, open("problemoutputs.txt") as file_3, open("problemparameters.txt") as file_4, open("problemstructs.txt") as file_5:
         problem   = file_1.read()
         input     = file_2.read()
@@ -94,12 +94,11 @@ def read_problems_json():
     return code,inputs,outputs,params,struct
     
 def main():
-    code,inputs,outputs,params,struct = read_problems_json()
- #problem,input,output,parameter,struct = read_Leetcode_Problem()                              
-    prompt                         = generate_Chatgpt_Prompt(code,inputs,outputs,params)         # Generate the prompt for chatgpt 
-    response                       = send_Chatgpt_Request(prompt)                                # Send request to chatgpt and store response
-    reset_cpp_program("cpp_program.cpp")                                                         # Overwrite the cpp file with only libraries to avoid chatgpt from adding its own libraries
-    append_to_first_empty_line("cpp_program.cpp",struct)                                         # Since chatgpt removes pre defined structs for some reason, we store them ourselves and write to cpp file
+    code,inputs,outputs,params,struct = read_problems_json()                             
+    prompt                            = generate_Chatgpt_Prompt(code,inputs,outputs,params)         # Generate the prompt for chatgpt 
+    response                          = send_Chatgpt_Request(prompt)                                # Send request to chatgpt and store response
+    reset_cpp_program("cpp_program.cpp")                                                            # Overwrite the cpp file with only libraries to avoid chatgpt from adding its own libraries
+    append_to_first_empty_line("cpp_program.cpp",struct)                                            # Since chatgpt removes pre defined structs for some reason, we store them ourselves and write to cpp file
     append_to_first_empty_line("cpp_program.cpp",response)
     compile_and_run_cpp_program()                                                               
   
