@@ -1,0 +1,551 @@
+inputs can be "correct" or "wrong" 
+____
+input can be "correct" = there exists an implementation of algorithm (based on the "textual specifications") that does not throw an exception, and possibly gives the correct output
+input can be "wrong" = there NOT exists an implementation of algorithm (based on the "textual specifications") that does not throw an exceptions, and at the same time provides correct output with "correct" inputs
+
+out = function(input)
+try
+	out = algorithm(input)
+catch E
+	rethrow E
+
+____
+[*] function can be "erroneous" or "healed"
+Function can be "erroneous" = for inputs that are "correct", it may happen (depending on the input, always correct) that the code throws an exeception (crashes)
+def. "errorInputs" = "correct inputs that provoke execption in the erroneous function"
+Function can be "healed" = for inputs that are NOT "errorInputs", the output should be the same given by "erroneous" function (i.e., we want to preserve the functionality in case the input is not one that provokes exception). On the other hand, for inputs that ARE "errorInputs", the healed code should
+	- not throw an exeception
+	- possibly, provides an output that is in line with the "textual specifications" of the function
+	
+	
+For us, the healed code should provide the same output of the "erroneous-code"
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Leetcode problem 1 (C++) - https://leetcode.com/problems/rotate-list/description/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+class Solution {
+public:
+ListNode* rotateRight(ListNode* head, int k) {
+     
+    if(head==NULL) return NULL;
+    if(head->next==NULL) return head;
+    vector<ListNode*> v;
+    ListNode* temp=head;
+
+    while(temp){
+        v.push_back(temp);
+        temp=temp->next;
+    }
+    int n=v.size()-1;
+    int indx=abs(n-k)+1;
+    
+    if(indx==0) return head;
+    else{
+        v[indx-1]->next=NULL;
+        v[n]->next=head;
+        head=v[indx];
+        return head;
+    }
+}};
+
+Runtime Error
+Line 15: Char 16: runtime error: member access within misaligned address 0xbebebebebebebebe for type 'ListNode', which requires 8 byte alignment (__ListNodeUtils__.cpp)
+0xbebebebebebebebe: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior __ListNodeUtils__.cpp:24:16
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Leetcode problem 2 (C++) - https://leetcode.com/problems/min-max-game/
+
+    class Solution {
+    public:
+    int minMaxGame(vector<int>& nums) {     
+        int n = nums.size(); 
+        int maxx = 0;
+        int minn = 0;      
+        vector<int> newNum(n/2,0);    
+        // Base Condition 
+        if(n == 1){
+            cout << "Hii";
+            // cout << newNum[0];
+            return newNum[0];
+        }       
+        // Condition for given Problem statement
+        for(int i =0; i < n/2; i++){
+            
+            if( i%2 == 0 ){
+                minn = min(nums[2*i] , nums[2*i+1]);
+                newNum.push_back(minn);
+                
+            }else{
+                maxx = max(nums[2*i] , nums[2*i+1]);
+                newNum.push_back(maxx);
+                
+            }
+        }
+        //Recusion
+        minMaxGame(newNum);
+        return newNum[0];
+    }
+};	
+
+Runtime Error
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==20==ERROR: AddressSanitizer: stack-overflow on address 0x7ffef6f48ff8 (pc 0x55658944ae60 bp 0x55658955f7d0 sp 0x7ffef6f49000 T0)
+==20==ABORTING
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Leetcode problem 3 (C++) - https://leetcode.com/problems/number-of-islands/
+
+class Solution {
+public:
+    vector<pair<int,int>> movements={{1,0},{-1,0},{0,1},{0,-1}};
+    bool isValid(int i,int j,int n,int m){
+        if((i>=n && i<n) && (j>=m && j<m)){
+            return 1;
+        }
+        return 0;
+    }
+    int numIslands(vector<vector<char>>& grid) {
+        int count=0;
+        queue<pair<int,int>> q;
+        int row=grid.size();
+        int col=grid[0].size();
+        vector<vector<bool>> visited;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                visited[i][j]=0;
+            }
+        }
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(grid[i][j]=='1'){
+                    q.push(make_pair(i,j));
+                }
+            }
+        }
+        while(!q.empty()){
+            auto it=q.front();
+            q.pop();
+            int x=it.first;
+            int y=it.second;
+            visited[x][y]=1;
+            count++;
+            for(auto movement:movements){
+                int childx=movement.first+x;
+                int childy=movement.second+y;
+                if(isValid(childx,childy,row,col) && !visited[childx][childy]){
+                    if(grid[childx][childy]=='1'){
+                    visited[childx][childy]=1;
+                    q.push(make_pair(childx,childy));
+                    }        
+                }
+            }
+        }
+        return count;
+    }
+};
+
+Runtime Error
+Line 1037: Char 9: runtime error: reference binding to null pointer of type 'std::vector<bool>' (stl_vector.h)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1046:9
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Leetcode problem 4 (C++) - https://leetcode.com/problems/climbing-stairs/
+
+class Solution {
+public:
+    int climbStairs(int n) {
+         int *stairs=new int (n);
+        stairs[0]=1;
+        stairs[1]=2;
+        for (int i=2;i<n;++i){
+            stairs[i]=stairs[i-1]+stairs[i-2];
+        }
+        return stairs[n-1];
+    }
+};
+
+Runtime Error
+Line 6: Char 9: runtime error: store to address 0x502000000014 with insufficient space for an object of type 'int' (solution.cpp)
+0x502000000014: note: pointer points here
+  01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00
+              ^
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior prog_joined.cpp:15:9
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Leetcode problem 5 (C++) https://leetcode.com/problems/add-two-numbers/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+#include <iostream>
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+         struct ListNode *head;
+   struct ListNode *l3;
+   
+   int a = 0;
+   int b = 0;
+   int s = 0;
+   int carry = 0;
+   
+   head = (struct ListNode *)malloc(sizeof(*head));
+   l3 = head;
+   l3->val = 0;
+   l3->next = NULL;
+   
+   while(l1 != NULL || l2 != NULL || carry != 0){
+       a = (l1 != NULL) ? l1->val : 0;
+       b = (l2 != NULL) ? l2->val : 0;
+       
+       s = a + b + carry;
+       if (s > 9){
+           carry = s/10;
+           l3->val = s%10;
+       }
+       else{
+           l3->val = s;
+           carry = 0;
+       }
+       l1 = (l1 != NULL) ? l1->next : NULL;
+       l2 = (l2 != NULL) ? l2->next : NULL;
+       
+       if (l1 != NULL || l2 != NULL || carry != 0) {
+           l3->next = (struct ListNode *)malloc(sizeof(*head));
+           l3 = l3->next;
+       }
+       
+   }
+
+    return head;
+    }
+};
+
+Runtime Error
+Line 15: Char 16: runtime error: member access within misaligned address 0xbebebebebebebebe for type 'ListNode', which requires 8 byte alignment (__ListNodeUtils__.cpp)
+0xbebebebebebebebe: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior __ListNodeUtils__.cpp:24:16
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Leetcode problem 6 (C++) - https://leetcode.com/problems/find-array-given-subset-sums/
+
+/**
+ * @author      : archit
+ * @GitHub      : archit-1997
+ * @Email       : architsingh456@gmail.com
+ * @file        : d.cpp
+ * @created     : Sunday Aug 22, 2021 09:13:42 IST
+ */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> recoverArray(int n, vector<int>& sums) {
+        multiset<int> ms;
+        vector<int> ans;
+        long long limit=(1<<n);
+        for (long long i = 0; i < limit; i++)
+        {
+            int x=sums[i];
+            if (x)
+                ms.insert(x);
+        }
+        for (long long i = 0; i < n; i++)
+        {
+            auto x = *ms.begin();
+            for (long long j = 0; j < limit; j++)
+            {
+                int cnt = 0;
+                for (int l = 0; l < i; ++l)
+                {
+                    if ((j >> l) % 2)
+                    {
+                        cnt += ans[l];
+                    }
+                }
+                ms.erase(ms.find(x + cnt));
+            }
+            ans.push_back(x);
+        }
+        return ans;
+    }
+};
+
+Runtime Error
+=================================================================
+==22==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x7f0a11400248 in thread T0
+    #3 0x7f0a13081d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 0x7f0a13081e3f  (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+Address 0x7f0a11400248 is located in stack of thread T0 at offset 72 in frame
+  This frame has 5 object(s):
+    [32, 40) '__an.i.i'
+    [64, 112) 'ms' <== Memory access at offset 72 is inside this variable
+    [144, 148) 'x'
+    [160, 164) 'x23'
+    [176, 180) 'ref.tmp64'
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Leetcode problem 7 (C++) - https://leetcode.com/problems/maximum-binary-tree/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
+        vector<int>::iterator biggest = std::max_element(std::begin(nums), std::end(nums)); 
+        TreeNode root(*biggest) ;
+        if (nums.empty() ) return NULL;  // end point 
+        vector<int> left (nums.begin() , biggest);
+        vector<int> right (biggest+1, nums.end());
+
+        root.left = constructMaximumBinaryTree(left);
+        root.right = constructMaximumBinaryTree(right);
+        return &root ; 
+    }
+};
+
+Runtime Error
+Line 1034: Char 16: runtime error: reference binding to null pointer of type 'int' (stl_iterator.h)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_iterator.h:1043:16
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Leetcode problem 8 (C++) - https://leetcode.com/problems/two-sum/
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int arr[5] = {2,3,4,5,6};
+    
+    for(int i = 0; i<5; i++){
+        for(int n=0;n<4;n++){
+        if(arr[i] + arr[i+n]==5){
+            cout<<"Elements having sum 5 = ["<<i<<","<<i+n<<"]"<<endl;
+            
+        }
+        }
+    }
+ 
+   return {}; }
+};
+
+Runtime Error
+Line 8: Char 21: runtime error: index 5 out of bounds for type 'int[5]' (solution.cpp)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior prog_joined.cpp:17:21
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Leetcode problem 9 (C++) - https://leetcode.com/problems/bulb-switcher/
+
+class Solution {
+public:
+int bulbSwitch(int n) {
+
+    vector <int>arr;
+    int flag = 0;
+    
+    for (int i = 0; i < n; i++)
+        arr.push_back(1);
+    
+    
+    for  (int i = 1; i < n; i++){
+        for (int j = 0; j < arr.size()-1; j+=i){
+            if (arr[j+i] == 1)
+                arr[j+i] = 0;
+            else
+                arr[j+i] = 1;
+        }
+    }
+    if (arr[arr.size()-1] == 0)
+        arr[arr.size()-1] = 1;
+    else
+        arr[arr.size()-1] = 0;
+    
+    for (int i = 0; i < arr.size(); i++){
+        if (arr[i] == 1)
+            flag += 1;
+    }
+    
+    return flag;
+}
+};
+
+Runtime Error
+Line 1037: Char 34: runtime error: applying non-zero offset 18446744073709551612 to null pointer (stl_vector.h)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1046:34
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Leetcode problem 10 (C++) - https://leetcode.com/problems/middle-of-the-linked-list/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        if(!head || !head->next)
+            return head;
+        ListNode* slow = head; ListNode* fast = head;
+        while(fast->next!=NULL && fast!=NULL)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
+    }
+};
+
+Runtime Error
+Line 17: Char 21: runtime error: member access within null pointer of type 'ListNode' (solution.cpp)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior prog_joined.cpp:26:21
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Leetcode problem 11 (C++) - https://leetcode.com/problems/next-greater-element-i/
+
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        stack<int> s;
+        unordered_map<int,int> nextgreatest;
+         
+        for(int i = 0; i < nums2.size(); i++)
+        {
+            while(!s.empty())
+            {
+                if(s.top() < nums2[i]){
+                    nextgreatest[s.top()] = nums2[i];
+                    s.pop();
+                }
+                nextgreatest[s.top()] = -1;
+ 
+            }
+            s.push(nums2[i]);
+        }
+         
+        vector<int> result;
+        for(int j = 0; j < nums1.size(); j++)
+        {
+            result.push_back(nextgreatest.at(nums1[j]));
+        }
+        return result;
+         
+    }
+};
+
+Runtime Error
+Line 172: Char 16: runtime error: reference binding to misaligned address 0xbebebebebebec0ba for type 'int', which requires 4 byte alignment (stl_deque.h)
+0xbebebebebebec0ba: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_deque.h:181:16
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Leetcode problem 12 (C++) - https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* build(vector<int> &inorder, vector<int> &postorder,int &k, int s, int e){
+        //k for pointer in postorder
+        //s and e for inorder
+        if(s>e) return NULL;
+        
+        TreeNode* root=new TreeNode(postorder[k]);
+        int index=-1;
+        for(int j=s;j<=e;j++){
+            if(inorder[j]==postorder[k]){
+                index=j;
+                break;
+            }
+        }
+        k--;
+        root->left=build(inorder,postorder,k,0,index-1);
+        root->right=build(inorder,postorder,k,index+1,e);
+        return root;
+    }
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        int n=postorder.size()-1;
+        return build(inorder,postorder,n,0,n);
+    }
+};
+
+Runtime Error
+Line 1037: Char 34: runtime error: addition of unsigned offset to 0x5030000000d0 overflowed to 0x5030000000cc (stl_vector.h)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/stl_vector.h:1046:34
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Leetcode problem 13 (Javascript) - https://leetcode.com/problems/add-two-numbers/
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(a, b){
+	let firstNum = parseInt(a.reverse().join(''));
+	let secondNum = parseInt(b.reverse().join(''));
+	let sum = firstNum + secondNum;
+	let sumReverse = parseInt(sum.toString().split('').reverse().join(''));
+	let sumArray = (""+sumReverse).split('').map(Number);
+	return sumArray;
+};
+
+Runtime Error
+Line 14 in solution.js
+	let firstNum = parseInt(a.reverse().join(''));
+	                          ^
+TypeError: a.reverse is not a function
+    Line 14: Char 28 in solution.js (addTwoNumbers)
+    Line 32: Char 19 in solution.js (Object.<anonymous>)
+    Line 16: Char 8 in runner.js (Object.runner)
+    Line 21: Char 26 in solution.js (Object.<anonymous>)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
