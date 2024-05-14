@@ -1,22 +1,28 @@
-import subprocess 
+
+import subprocess
 import os
 import json
-import editdistance
 from openai import OpenAI
 
 os.environ["OPENAI_API_KEY"] = open("API_KEY","r").read()
+errorMsg = ""
 
 def run_cpp_program():
+    file = open('exceptionLog.txt', 'w') # reset log 
+    file.close()
     run_command = ["./cpp_program"]
     run_process = subprocess.run(run_command,  stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
+    
     if(run_process.returncode == 0):
             print("cpp program run succeeded, Output: " + run_process.stdout.decode()) 
             return run_process.returncode, run_process.stdout.decode()
     else:
-             if run_process.stderr:
-                print("cpp program run failed, Error: " + run_process.stderr.decode()) 
-             else:
-                print("cpp program run failed at runtime with no error message.")
+        print("cpp program run failed, Error: " + run_process.stderr.decode()) 
+  
+    with open('exceptionLog.txt', 'r') as file:
+        errorMsg = file.read().rstrip()
+
+    print("ERORR MESSAGE FROM FILE IS ", errorMsg)
     return  run_process.returncode, run_process.stderr.decode()
 
 def compile_cpp_program():
@@ -25,33 +31,7 @@ def compile_cpp_program():
     compile_process = subprocess.run(compile_command,   stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
 
     return compile_process.returncode
- 
-def compile_and_run_cpp_program():
-    compile_command = ["g++", "cpp_program.cpp", "-o", "cpp_program"]  
-    run_command     = ["./cpp_program"] 
-    compile_process = subprocess.run(compile_command,   stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
 
-    print("Compiling cpp program...") 
- 
-    if compile_process.returncode == 0: 
-        print("Compilation successful.") 
-        run_process = subprocess.run(run_command,  stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
-        print("returncode :" + str(run_process.returncode))
-        
-        if(run_process.returncode == 0):
-            print("cpp program run succeeded, Output: " + run_process.stdout.decode()) 
-            return compile_process.returncode, run_process.stdout.decode()
-        else:
-             if run_process.stderr:
-                print("cpp program run failed, Error: " + run_process.stderr.decode()) 
-             else:
-                print("cpp program run failed at runtime with no error message.")
-        return compile_process.returncode, run_process.stderr.decode()  
-
-    else: 
-        print("Compilation failed.") 
-        print(compile_process.stderr.decode()) 
-    return compile_process.returncode
 
 def generate_Chatgpt_Prompt(code,description):
   background  = "I'm getting runtime error in my c++ program, could you identify and fix the problem for me? In your response do not give me any comments \
@@ -63,7 +43,9 @@ def generate_Chatgpt_Prompt(code,description):
    In your response do not remove any class or method. I want you to correct the class called Solution so that it works"
 
   includes         = "Do not include any libraries in your response, assume that they are already there"
-  return str(background) + str(description) +  str(current_solution) +  str(includes) 
+
+  error = "The current error is:",errorMsg
+  return str(background) + str(description) +  str(current_solution) +  str(includes) + str(error)
 
 def send_Chatgpt_Request(prompt):
   print("Sending query to chatGPT...\n")
@@ -119,16 +101,23 @@ def write_results_to_file(actual,expected):
         file.write("\n")
 
     file.close()            
-def levenshtein_similarity(str1, str2):
-    return 1 - (editdistance.eval(str1, str2) / max(len(str1), len(str2)))
+
 
 
 def compose_program(struct,code,printFunction,mainFunction):
      append("cpp_program.cpp",struct)
      append("cpp_program.cpp",code)            # the code Solution remains the same over all function calls 
      append("cpp_program.cpp",printFunction)   # print function remains the same over all function calls (needed for checking results std.out)
+     append("cpp_program.cpp","void segfault_handler(int signal) {\
+     std::ofstream fout(\"exceptionLog.txt\", std::ios_base::app);\
+     fout << \"Segmentation fault occurred!\" << std::endl;\
+     fout.close();\
+     exit(signal);};")                         # add SIGhandler to cpp wrapper 
      append("cpp_program.cpp",mainFunction)    # test function
+     
+     
 
+     
 def attempt_all_test_cases_with_chatgpt_response(struct,chatgptResponse,testCases,printFunction,mainFunction,outputs):
     i = 0
     healingRate = 0
@@ -147,6 +136,8 @@ def attempt_all_test_cases_with_chatgpt_response(struct,chatgptResponse,testCase
             break
         i += 1
     return healingRate/i
+
+
 
 def main():
     code,outputs,struct,mainFunction,printFunction,description = read_problems_json(6)      # read problem [i] from json (0-21)
