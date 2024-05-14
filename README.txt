@@ -36,6 +36,7 @@ main.py - The executable which performs the following:
 5. If a runtime error is invoked for any of the test cases we query chatGPT requesting a solution. The information sent to chatGPT is the following:
     5.1 The current source code.
     5.2 The program description - what the problem is supposed to be able to do, taken from leetcode_problems.json
+    5.3 The error code received from the runtime exception
 6. Once the program has received a solution from chatGPT it iterates over all test cases again and runs them tt see if the new source code 
 from chatGPT is able to pass the test cases to determine the succesfulness of the code healing.
 7. The results from the executed test cases are printed out to the file results.txt to which the success can be examined 
