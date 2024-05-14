@@ -1,4 +1,9 @@
-The project is strucred in the following files: 
+[ACSOS24 – under review] Validating Large Language Models for Self-Healing (Anonymised for double-blind review.)
+
+Prototype implementation for the Statistics builder.
+
+
+The project is structured in the following files: 
 
 leetcode_problems.json - Contains all problems that have been gathered from leetcode user submissions containing runtime errors
 for each problem the following exists:
