@@ -9,8 +9,8 @@
             ],
             "description" : "Given the head of a linked list, rotate the list to the right by k places.",
             "mainFunction":[
-                 "int main (){\n Solution obj;\n ListNode* head1 = new ListNode(1);\n head1->next = new ListNode(2);\n head1->next->next = new ListNode(3);\n head1->next->next->next = new ListNode(4);\n head1->next->next->next->next = new ListNode(5);\n ListNode* rotated_head1 = obj.rotateRight(head1, 2);\n printList(rotated_head1);\n};"
-            ,    "int main (){\n Solution obj;\n ListNode* head2 = new ListNode(0);\n head2->next = new ListNode(1);\n head2->next->next = new ListNode(2);\n ListNode* rotated_head2 = obj.rotateRight(head2, 4);\n printList(rotated_head2);\n};"
+                 "int main (){\nsignal(SIGSEGV, segfault_handler);\n Solution obj;\n ListNode* head1 = new ListNode(1);\n head1->next = new ListNode(2);\n head1->next->next = new ListNode(3);\n head1->next->next->next = new ListNode(4);\n head1->next->next->next->next = new ListNode(5);\n ListNode* rotated_head1 = obj.rotateRight(head1, 2);\n printList(rotated_head1);\n};"
+            ,    "int main (){\nsignal(SIGSEGV, segfault_handler);\n Solution obj;\n ListNode* head2 = new ListNode(0);\n head2->next = new ListNode(1);\n head2->next->next = new ListNode(2);\n ListNode* rotated_head2 = obj.rotateRight(head2, 4);\n printList(rotated_head2);\n};"
 
             ],
             "printFunction": "void printList(ListNode* head){\n ListNode* curr = head;\n while (curr)\n {\n cout << curr->val << \" \"; curr = curr->next;\n } cout << endl;\n };",
@@ -28,8 +28,8 @@
             "printFunction": "",
 
             "mainFunction": [
-                "int main() {\n Solution sol; vector<int> nums1 = {1, 3, 5, 2, 4, 8, 2, 2}; cout << sol.minMaxGame(nums1) << endl; return 0;\n };",
-                "int main() {\n Solution sol; vector<int> nums2 = {3}; cout << sol.minMaxGame(nums2) << endl; return 0;\n };"
+                "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; vector<int> nums1 = {1, 3, 5, 2, 4, 8, 2, 2}; cout << sol.minMaxGame(nums1) << endl; return 0;\n };",
+                "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; vector<int> nums2 = {3}; cout << sol.minMaxGame(nums2) << endl; return 0;\n };"
         
             ],
             "description": "Given an array nums, apply a specified algorithm to transform it and return the last remaining number.",
@@ -48,8 +48,8 @@
             
             "printFunction": "void printOutput(int n, int output) { cout << \"Input n = \" << n << \" Output = \" << output << endl; }",
             "mainFunction": [
-                "int main() { Solution sol; int n1 = 2; int output1 = sol.climbStairs(n1); printOutput(n1, output1); return 0;\n };",
-                "int main() { Solution sol; int n2 = 3; int output2 = sol.climbStairs(n2); printOutput(n2, output2); return 0;\n };"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; int n1 = 2; int output1 = sol.climbStairs(n1); printOutput(n1, output1); return 0;\n };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; int n2 = 3; int output2 = sol.climbStairs(n2); printOutput(n2, output2); return 0;\n };"
           ],
             "description":"You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?", 
             "struct": "",
@@ -68,9 +68,9 @@
 
             "printFunction": "void printList(ListNode* head) { ListNode* curr = head; while (curr) { std::cout << curr->val << \" \"; curr = curr->next; } std::cout << std::endl; }",
             "mainFunction": [
-                "int main() { Solution sol; ListNode* l1 = new ListNode(2); l1->next = new ListNode(4); l1->next->next = new ListNode(3); ListNode* l2 = new ListNode(5); l2->next = new ListNode(6); l2->next->next = new ListNode(4); ListNode* result1 = sol.addTwoNumbers(l1, l2); std::cout << \"Test case 1: \"; printList(result1); };",
-                "int main() { Solution sol; ListNode* l3 = new ListNode(0); ListNode* l4 = new ListNode(0); ListNode* result2 = sol.addTwoNumbers(l3, l4); std::cout << \"Test case 2: \"; printList(result2); \n};",
-                "int main() { Solution sol; ListNode* l5 = new ListNode(9); l5->next = new ListNode(9); l5->next->next = new ListNode(9); l5->next->next->next = new ListNode(9); l5->next->next->next->next = new ListNode(9); l5->next->next->next->next->next = new ListNode(9); l5->next->next->next->next->next->next = new ListNode(9); ListNode* l6 = new ListNode(9); l6->next = new ListNode(9); l6->next->next = new ListNode(9); l6->next->next->next = new ListNode(9); ListNode* result3 = sol.addTwoNumbers(l5, l6); std::cout << \"Test case 3: \"; printList(result3); };"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* l1 = new ListNode(2); l1->next = new ListNode(4); l1->next->next = new ListNode(3); ListNode* l2 = new ListNode(5); l2->next = new ListNode(6); l2->next->next = new ListNode(4); ListNode* result1 = sol.addTwoNumbers(l1, l2); std::cout << \"Test case 1: \"; printList(result1); };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* l3 = new ListNode(0); ListNode* l4 = new ListNode(0); ListNode* result2 = sol.addTwoNumbers(l3, l4); std::cout << \"Test case 2: \"; printList(result2); \n};",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* l5 = new ListNode(9); l5->next = new ListNode(9); l5->next->next = new ListNode(9); l5->next->next->next = new ListNode(9); l5->next->next->next->next = new ListNode(9); l5->next->next->next->next->next = new ListNode(9); l5->next->next->next->next->next->next = new ListNode(9); ListNode* l6 = new ListNode(9); l6->next = new ListNode(9); l6->next->next = new ListNode(9); l6->next->next->next = new ListNode(9); ListNode* result3 = sol.addTwoNumbers(l5, l6); std::cout << \"Test case 3: \"; printList(result3); };"
           ],
             "struct": "struct ListNode {\n    int val;\n    ListNode *next;\n    ListNode() : val(0), next(nullptr) {}\n    ListNode(int x) : val(x), next(nullptr) {}\n    ListNode(int x, ListNode *next) : val(x), next(next) {}\n};",
             "code": "class Solution {\n    public:\n        ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {\n            struct ListNode *head;\n            struct ListNode *l3;\n            int a = 0;\n            int b = 0;\n            int s = 0;\n            int carry = 0;\n            head = (struct ListNode *)malloc(sizeof(*head));\n            l3 = head;\n            l3->val = 0;\n            l3->next = NULL;\n            while(l1 != NULL || l2 != NULL || carry != 0){\n                a = (l1 != NULL) ? l1->val : 0;\n                b = (l2 != NULL) ? l2->val : 0;\n                s = a + b + carry;\n                if (s > 9){\n                    carry = s/10;\n                    l3->val = s%10;\n                }\n                else{\n                    l3->val = s;\n                    carry = 0;\n                }\n                l1 = (l1 != NULL) ? l1->next : NULL;\n                l2 = (l2 != NULL) ? l2->next : NULL;\n                if (l1 != NULL || l2 != NULL || carry != 0) {\n                    l3->next = (struct ListNode *)malloc(sizeof(*head));\n                    l3 = l3->next;\n                }\n            }\n            return head;\n        }\n};"
@@ -86,8 +86,8 @@
             "description":"You are given an integer array nums with no duplicates. A maximum binary tree can be built recursively from nums using the following algorithm Create a root node whose value is the maximum value in nums. Recursively build the left subtree on the subarray prefix to the left of the maximum value. Recursively build the right subtree on the subarray suffix to the right of the maximum value. Return the maximum binary tree built from nums.",
             "printFunction": "void printTree(TreeNode* root) { if (!root) return; cout << root->val << \" \"; printTree(root->left); printTree(root->right); \n};",
             "mainFunction": [
-                "int main() { Solution sol; vector<int> nums1 = {3, 2, 1, 6, 0, 5}; TreeNode* result1 = sol.constructMaximumBinaryTree(nums1); cout << \"Input 1: \"; printTree(result1); cout << endl;\n };",
-                "int main() { Solution sol; vector<int> nums2 = {3, 2, 1}; TreeNode* result2 = sol.constructMaximumBinaryTree(nums2); cout << \"Input 2: \"; printTree(result2); cout << endl;\n };"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; vector<int> nums1 = {3, 2, 1, 6, 0, 5}; TreeNode* result1 = sol.constructMaximumBinaryTree(nums1); cout << \"Input 1: \"; printTree(result1); cout << endl;\n };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; vector<int> nums2 = {3, 2, 1}; TreeNode* result2 = sol.constructMaximumBinaryTree(nums2); cout << \"Input 2: \"; printTree(result2); cout << endl;\n };"
             ],
             "struct": "struct TreeNode { int val; TreeNode *left; TreeNode *right; TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n };",
             "code": "class Solution {\n    public:\n        TreeNode* constructMaximumBinaryTree(vector<int>& nums) {\n            vector<int>::iterator biggest = std::max_element(std::begin(nums), std::end(nums)); \n            TreeNode* root = new TreeNode(*biggest);\n            if (nums.empty()) return nullptr;  // end point \n            vector<int> left(nums.begin(), biggest);\n            vector<int> right(biggest + 1, nums.end());\n           root->left = constructMaximumBinaryTree(left);\n            root->right = constructMaximumBinaryTree(right);\n            return root;\n        };\n};"
@@ -104,9 +104,9 @@
             "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.",
             "printFunction":"",
             "mainFunction": [
-                "int main() { Solution sol; vector<int> nums = {2,7,11,15}; sol.twoSum(nums,9); return 0;\n };",
-                "int main() { Solution sol; vector<int> nums = {3,2,4}; sol.twoSum(nums,6); return 0; \n};",
-                "int main() { Solution sol; vector<int> nums = {3,3}; sol.twoSum(nums,6); return 0; \n};"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; vector<int> nums = {2,7,11,15}; sol.twoSum(nums,9); return 0;\n };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; vector<int> nums = {3,2,4}; sol.twoSum(nums,6); return 0; \n};",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; vector<int> nums = {3,3}; sol.twoSum(nums,6); return 0; \n};"
             ],
             "struct":"",
             "code": "class Solution {\n    public:\n        vector<int> twoSum(vector<int>& nums, int target) {\n            int arr[5] = {2,3,4,5,6};\n            for(int i = 0; i < 5; i++) {\n                for(int n = 0; n < 4; n++) {\n                    if(arr[i] + arr[i + n] == 5) {\n                        cout << \"Elements having sum 5 = [\" << i << \",\" << i + n << \"]\" << endl;\n                    }\n                }\n            }\n            return {};\n        }\n};"
@@ -123,9 +123,9 @@
             "description": "There are n bulbs that are initially off. You first turn on all the bulbs, then you turn off every second bulb. On the third round, you toggle every third bulb (turning on if it's off or turning off if it's on). For the ith round, you toggle every i bulb. For the nth round, you only toggle the last bulb. Return the number of bulbs that are on after n rounds.",
             "printFunction":"",
             "mainFunction":[
-                "int main() { Solution sol; cout << sol.bulbSwitch(3);\n };",
-                "int main() { Solution sol; cout << sol.bulbSwitch(0);\n };",
-                "int main() { Solution sol; cout << sol.bulbSwitch(1);\n };"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; cout << sol.bulbSwitch(3);\n };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; cout << sol.bulbSwitch(0);\n };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; cout << sol.bulbSwitch(1);\n };"
             ], 
             "struct":"",
             "code": "class Solution {\n    public:\n        int bulbSwitch(int n) {\n            vector<int> arr;\n            int flag = 0;\n            for (int i = 0; i < n; i++)\n                arr.push_back(1);\n            for (int i = 1; i < n; i++) {\n                for (int j = 0; j < arr.size() - 1; j += i) {\n                    if (arr[j + i] == 1)\n                        arr[j + i] = 0;\n                    else\n                        arr[j + i] = 1;\n                }\n            }\n            if (arr[arr.size() - 1] == 0)\n                arr[arr.size() - 1] = 1;\n            else\n                arr[arr.size() - 1] = 0;\n            for (int i = 0; i < arr.size(); i++) {\n                if (arr[i] == 1)\n                    flag += 1;\n            }\n            return flag;\n        }\n};"
@@ -140,8 +140,8 @@
             "description": "Given the head of a singly linked list, return the middle node of the linked list.If there are two middle nodes, return the second middle node.",
             "printFunction": "void printList(ListNode* head) { while (head) { cout << head->val << \" \"; head = head->next; } cout << endl; }",
             "mainFunction":[
-                "int main() { Solution sol; ListNode* head1 = new ListNode(1); head1->next = new ListNode(2); head1->next->next = new ListNode(3); head1->next->next->next = new ListNode(4); head1->next->next->next->next = new ListNode(5); cout << \"Test case 1: \"; printList(sol.middleNode(head1));\n };",
-                "int main() { Solution sol; ListNode* head2 = new ListNode(1); head2->next = new ListNode(2); head2->next->next = new ListNode(3); head2->next->next->next = new ListNode(4); head2->next->next->next->next = new ListNode(5); head2->next->next->next->next->next = new ListNode(6); cout << \"Test case 2: \"; printList(sol.middleNode(head2));\n };"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head1 = new ListNode(1); head1->next = new ListNode(2); head1->next->next = new ListNode(3); head1->next->next->next = new ListNode(4); head1->next->next->next->next = new ListNode(5); cout << \"Test case 1: \"; printList(sol.middleNode(head1));\n };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head2 = new ListNode(1); head2->next = new ListNode(2); head2->next->next = new ListNode(3); head2->next->next->next = new ListNode(4); head2->next->next->next->next = new ListNode(5); head2->next->next->next->next->next = new ListNode(6); cout << \"Test case 2: \"; printList(sol.middleNode(head2));\n };"
             ], 
             "struct": "struct ListNode {\n    int val;\n    ListNode *next;\n    ListNode() : val(0), next(nullptr) {}\n    ListNode(int x) : val(x), next(nullptr) {}\n    ListNode(int x, ListNode *next) : val(x), next(next) {}\n};",
             "code": "class Solution {\npublic:\n    ListNode* middleNode(ListNode* head) {\n        if (!head || !head->next)\n            return head;\n        ListNode* slow = head;\n        ListNode* fast = head;\n        while (fast->next != NULL && fast != NULL) {\n            slow = slow->next;\n            fast = fast->next->next;\n        }\n        return slow;\n    }\n};"
@@ -173,8 +173,8 @@
             "description": "Given two integer arrays inorder and postorder where inorder is the inorder traversal of a binary tree and postorder is the postorder traversal of the same tree, construct and return the binary tree.",
             "printFunction": "void printTree(TreeNode* root) { if (!root) return; cout << root->val << \" \"; printTree(root->left); printTree(root->right); }",
             "mainFunction": [
-                "int main() {\n Solution sol; vector<int> inorder1 = {9, 3, 15, 20, 7}; vector<int> postorder1 = {9, 15, 7, 20, 3}; TreeNode* result1 = sol.buildTree(inorder1, postorder1); cout << \"Test case 1: \"; printTree(result1); cout << endl; };",
-                "int main() {\n Solution sol; vector<int> inorder2 = {-1}; vector<int> postorder2 = {-1}; TreeNode* result2 = sol.buildTree(inorder2, postorder2); cout << \"Test case 2: \"; printTree(result2); cout << endl; };"
+                "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; vector<int> inorder1 = {9, 3, 15, 20, 7}; vector<int> postorder1 = {9, 15, 7, 20, 3}; TreeNode* result1 = sol.buildTree(inorder1, postorder1); cout << \"Test case 1: \"; printTree(result1); cout << endl; };",
+                "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; vector<int> inorder2 = {-1}; vector<int> postorder2 = {-1}; TreeNode* result2 = sol.buildTree(inorder2, postorder2); cout << \"Test case 2: \"; printTree(result2); cout << endl; };"
             ],
             "struct":"struct TreeNode { int val; TreeNode *left; TreeNode *right; TreeNode() : val(0), left(nullptr), right(nullptr) {} TreeNode(int x) : val(x), left(nullptr), right(nullptr) {} TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}; };",
             "code": "class Solution { public: TreeNode* build(vector<int> &inorder, vector<int> &postorder,int &k, int s, int e){ if(s>e) return NULL; TreeNode* root=new TreeNode(postorder[k]); int index=-1; for(int j=s;j<=e;j++){ if(inorder[j]==postorder[k]){ index=j; break; } } k--; root->left=build(inorder,postorder,k,0,index-1); root->right->right=build(inorder,postorder,k,index+1,e); return root; } TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) { int n=postorder.size()-1; return build(inorder,postorder,n,0,n); } };"
@@ -189,8 +189,8 @@
             "description": "Given the root of a binary tree, return its maximum depth. A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.",
             "printFunction": "",
             "mainFunction":[ 
-                "int main() { Solution sol; TreeNode* root1 = new TreeNode(3); root1->left = new TreeNode(9); root1->right = new TreeNode(20); root1->right->left = new TreeNode(15); root1->right->right = new TreeNode(7); int depth1 = sol.maxDepth(root1); cout << \"Test 1: \" << depth1 << endl;\n };",
-                "int main() { Solution sol; TreeNode* root2 = new TreeNode(1); root2->right = new TreeNode(2); int depth2 = sol.maxDepth(root2); cout << \"Test 2: \" << depth2 << endl; }"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root1 = new TreeNode(3); root1->left = new TreeNode(9); root1->right = new TreeNode(20); root1->right->left = new TreeNode(15); root1->right->right = new TreeNode(7); int depth1 = sol.maxDepth(root1); cout << \"Test 1: \" << depth1 << endl;\n };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root2 = new TreeNode(1); root2->right = new TreeNode(2); int depth2 = sol.maxDepth(root2); cout << \"Test 2: \" << depth2 << endl; }"
             ],
 
             "struct": "struct TreeNode {\n int val; TreeNode *left; TreeNode *right; TreeNode() : val(0), left(nullptr), right(nullptr) {} TreeNode(int x) : val(x), left(nullptr), right(nullptr) {} TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}; };",
@@ -208,9 +208,9 @@
             "description": "Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.",
             "printFunction": "",
             "mainFunction":[ 
-                "int main() { Solution sol; ListNode* head1 = new ListNode(1); head1->next = new ListNode(2); head1->next->next = new ListNode(6); head1->next->next->next = new ListNode(3); head1->next->next->next->next = new ListNode(4); head1->next->next->next->next->next = new ListNode(5); head1->next->next->next->next->next->next = new ListNode(6); int val1 = 6; ListNode* result1 = sol.removeElements(head1, val1); cout << \"Case 1: \"; while (result1 != nullptr) { cout << result1->val << \" \"; result1 = result1->next; } cout << endl; };",
-                "int main() { Solution sol; ListNode* head2 = nullptr; int val2 = 1; ListNode* result2 = sol.removeElements(head2, val2); cout << \"Case 2: \"; while (result2 != nullptr) { cout << result2->val << \" \"; result2 = result2->next; } cout << endl; };",
-                "int main() { Solution sol; ListNode* head3 = new ListNode(7); head3->next = new ListNode(7); head3->next->next = new ListNode(7); head3->next->next->next = new ListNode(7); int val3 = 7; ListNode* result3 = sol.removeElements(head3, val3); cout << \"Case 3: \"; while (result3 != nullptr) { cout << result3->val << \" \"; result3 = result3->next; } cout << endl; };"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head1 = new ListNode(1); head1->next = new ListNode(2); head1->next->next = new ListNode(6); head1->next->next->next = new ListNode(3); head1->next->next->next->next = new ListNode(4); head1->next->next->next->next->next = new ListNode(5); head1->next->next->next->next->next->next = new ListNode(6); int val1 = 6; ListNode* result1 = sol.removeElements(head1, val1); cout << \"Case 1: \"; while (result1 != nullptr) { cout << result1->val << \" \"; result1 = result1->next; } cout << endl; };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head2 = nullptr; int val2 = 1; ListNode* result2 = sol.removeElements(head2, val2); cout << \"Case 2: \"; while (result2 != nullptr) { cout << result2->val << \" \"; result2 = result2->next; } cout << endl; };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head3 = new ListNode(7); head3->next = new ListNode(7); head3->next->next = new ListNode(7); head3->next->next->next = new ListNode(7); int val3 = 7; ListNode* result3 = sol.removeElements(head3, val3); cout << \"Case 3: \"; while (result3 != nullptr) { cout << result3->val << \" \"; result3 = result3->next; } cout << endl; };"
             ],
 
             "struct": "struct ListNode { int val; ListNode *next; ListNode() : val(0), next(nullptr) {} ListNode(int x) : val(x), next(nullptr) {} ListNode(int x, ListNode *next) : val(x), next(next) {}; };",
@@ -227,9 +227,9 @@
             "description": "Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return the root node reference (possibly updated) of the BST Basically, the deletion can be divided into two stages: Search for a node to remove.If the node is found, delete the node.",
             "printFunction": "void printTree(TreeNode* root) { if (!root) return; queue<TreeNode*> q; q.push(root); while (!q.empty()) { TreeNode* node = q.front(); q.pop(); cout << node->val << \" \"; if (node->left) q.push(node->left); if (node->right) q.push(node->right); } cout << endl; }",
             "mainFunction":[ 
-                "int main() { Solution sol; TreeNode* root1 = new TreeNode(5); root1->left = new TreeNode(3); root1->right = new TreeNode(6); root1->left->left = new TreeNode(2); root1->left->right = new TreeNode(4); root1->right->right = new TreeNode(7); int key1 = 3; cout << \"Test 1: Before deletion: \"; printTree(root1); root1 = sol.deleteNode(root1, key1); cout << \"After deletion: \"; printTree(root1); };",
-                "int main() { Solution sol; TreeNode* root2 = new TreeNode(5); root2->left = new TreeNode(3); root2->right = new TreeNode(6); root2->left->left = new TreeNode(2); root2->left->right = new TreeNode(4); root2->right->right = new TreeNode(7); int key2 = 0; cout << \"Test 2: Before deletion: \"; printTree(root2); root2 = sol.deleteNode(root2, key2); cout << \"After deletion: \"; printTree(root2); };",
-                "int main() { Solution sol; TreeNode* root3 = nullptr; int key3 = 0; cout << \"Test 3: Before deletion: \"; printTree(root3); root3 = sol.deleteNode(root3, key3); cout << \"After deletion: \"; printTree(root3); }"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root1 = new TreeNode(5); root1->left = new TreeNode(3); root1->right = new TreeNode(6); root1->left->left = new TreeNode(2); root1->left->right = new TreeNode(4); root1->right->right = new TreeNode(7); int key1 = 3; cout << \"Test 1: Before deletion: \"; printTree(root1); root1 = sol.deleteNode(root1, key1); cout << \"After deletion: \"; printTree(root1); };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root2 = new TreeNode(5); root2->left = new TreeNode(3); root2->right = new TreeNode(6); root2->left->left = new TreeNode(2); root2->left->right = new TreeNode(4); root2->right->right = new TreeNode(7); int key2 = 0; cout << \"Test 2: Before deletion: \"; printTree(root2); root2 = sol.deleteNode(root2, key2); cout << \"After deletion: \"; printTree(root2); };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root3 = nullptr; int key3 = 0; cout << \"Test 3: Before deletion: \"; printTree(root3); root3 = sol.deleteNode(root3, key3); cout << \"After deletion: \"; printTree(root3); }"
             ],
 
             "struct": "struct TreeNode { int val; TreeNode *left; TreeNode *right; TreeNode() : val(0), left(nullptr), right(nullptr) {}; TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}; TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}; };" ,
@@ -246,9 +246,9 @@
             "description": "Given an integer array nums where the elements are sorted in ascending order, convert it to a  height-balanced binary search tree.",
             "printFunction": "void printTree(TreeNode* root) { if (!root) return; queue<TreeNode*> q; q.push(root); while (!q.empty()) { TreeNode* node = q.front(); q.pop(); cout << node->val << \" \"; if (node->left) q.push(node->left); if (node->right) q.push(node->right); } cout << endl; }",
             "mainFunction":[ 
-                "int main() { Solution sol; TreeNode* root1 = new TreeNode(5); root1->left = new TreeNode(3); root1->right = new TreeNode(6); root1->left->left = new TreeNode(2); root1->left->right = new TreeNode(4); root1->right->right = new TreeNode(7); int key1 = 3; printTree(root1); root1 = sol.deleteNode(root1, key1); printTree(root1); };",
-                "int main() { Solution sol; TreeNode* root2 = new TreeNode(5); root2->left = new TreeNode(3); root2->right = new TreeNode(6); root2->left->left = new TreeNode(2); root2->left->right = new TreeNode(4); root2->right->right = new TreeNode(7); int key2 = 0; printTree(root2); root2 = sol.deleteNode(root2, key2);printTree(root2); };",
-                "int main() { Solution sol; TreeNode* root3 = nullptr; int key3 = 0; cout << \"Test 3: Before deletion: \"; printTree(root3); root3 = sol.deleteNode(root3, key3); cout << \"After deletion: \"; printTree(root3); }"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root1 = new TreeNode(5); root1->left = new TreeNode(3); root1->right = new TreeNode(6); root1->left->left = new TreeNode(2); root1->left->right = new TreeNode(4); root1->right->right = new TreeNode(7); int key1 = 3; printTree(root1); root1 = sol.deleteNode(root1, key1); printTree(root1); };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root2 = new TreeNode(5); root2->left = new TreeNode(3); root2->right = new TreeNode(6); root2->left->left = new TreeNode(2); root2->left->right = new TreeNode(4); root2->right->right = new TreeNode(7); int key2 = 0; printTree(root2); root2 = sol.deleteNode(root2, key2);printTree(root2); };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root3 = nullptr; int key3 = 0; cout << \"Test 3: Before deletion: \"; printTree(root3); root3 = sol.deleteNode(root3, key3); cout << \"After deletion: \"; printTree(root3); }"
             ],
 
             "struct": "struct TreeNode { int val; TreeNode *left; TreeNode *right; TreeNode() : val(0), left(nullptr), right(nullptr) {}; TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}; TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}; };",
@@ -265,8 +265,8 @@
             "description": "Given the root of a binary search tree, rearrange the tree in in-order so that the leftmost node in the tree is now the root of the tree, and every node has no left child and only one right child.",
             "printFunction": "void printTree(TreeNode* root) { if (!root) return; queue<TreeNode*> q; q.push(root); while (!q.empty()) { TreeNode* node = q.front(); q.pop(); cout << node->val << \" \"; if (node->left) q.push(node->left); if (node->right) q.push(node->right); } cout << endl; };",
             "mainFunction":[ 
-                "int main() { Solution sol; TreeNode* root1 = new TreeNode(5); root1->left = new TreeNode(3); root1->right = new TreeNode(6); root1->left->left = new TreeNode(2); root1->left->right = new TreeNode(4); root1->right->right = new TreeNode(8); root1->left->left->left = new TreeNode(1); root1->right->right->left = new TreeNode(7); root1->right->right->right = new TreeNode(9); cout << \"Test Case 1: Before transformation: \"; printTree(root1); TreeNode* result1 = sol.increasingBST(root1); cout << \"After transformation: \"; printTree(result1); };",
-                "int main() { Solution sol; TreeNode* root2 = new TreeNode(5); root2->left = new TreeNode(1); root2->right = new TreeNode(7); cout << \"Test Case 2: Before transformation: \"; printTree(root2); TreeNode* result2 = sol.increasingBST(root2); cout << \"After transformation: \"; printTree(result2); };"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root1 = new TreeNode(5); root1->left = new TreeNode(3); root1->right = new TreeNode(6); root1->left->left = new TreeNode(2); root1->left->right = new TreeNode(4); root1->right->right = new TreeNode(8); root1->left->left->left = new TreeNode(1); root1->right->right->left = new TreeNode(7); root1->right->right->right = new TreeNode(9); cout << \"Test Case 1: Before transformation: \"; printTree(root1); TreeNode* result1 = sol.increasingBST(root1); cout << \"After transformation: \"; printTree(result1); };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root2 = new TreeNode(5); root2->left = new TreeNode(1); root2->right = new TreeNode(7); cout << \"Test Case 2: Before transformation: \"; printTree(root2); TreeNode* result2 = sol.increasingBST(root2); cout << \"After transformation: \"; printTree(result2); };"
             ],
             "struct": "struct TreeNode { int val; TreeNode *left; TreeNode *right; TreeNode() : val(0), left(nullptr), right(nullptr) {} TreeNode(int x) : val(x), left(nullptr), right(nullptr) {} TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}; };",
             "code": "class Solution { public: TreeNode* increasingBST(TreeNode* root) { vector<int>v; dfs(root,v); TreeNode* ans= NULL; TreeNode* temp; for(auto x: v) { if(ans == NULL) { ans = new TreeNode(x); temp = ans; } else { temp->right= new TreeNode(x); temp = temp->right; } } return ans; } void dfs(TreeNode* node,vector<int>&v) { if(node->right==NULL)return; dfs(node->left,v); v.push_back(node->val); dfs(node->right,v); }\n };"
@@ -282,8 +282,8 @@
             "description": "Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.",
             "printFunction": "void printList(ListNode* head) { ListNode* current = head; while (current != nullptr) { cout << current->val << \" \"; current = current->next; } cout << endl; };",
             "mainFunction":[ 
-                "int main() {\n Solution sol; ListNode* head2 = new ListNode(1); head2->next = new ListNode(1); head2->next->next = new ListNode(2); cout << \"Test Case 2: Before transformation: \"; printList(head2); ListNode* result2 = sol.deleteDuplicates(head2); cout << \"After transformation: \"; printList(result2); }",
-                "int main() {\n Solution sol; ListNode* head2 = new ListNode(1); head2->next = new ListNode(1); head2->next->next = new ListNode(2); head2->next->next->next = new ListNode(3); head2->next->next->next->next = new ListNode(3); cout << \"Test Case 2: Before transformation: \"; printList(head2); ListNode* result2 = sol.deleteDuplicates(head2); cout << \"After transformation: \"; printList(result2); }"
+                "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head2 = new ListNode(1); head2->next = new ListNode(1); head2->next->next = new ListNode(2); cout << \"Test Case 2: Before transformation: \"; printList(head2); ListNode* result2 = sol.deleteDuplicates(head2); cout << \"After transformation: \"; printList(result2); }",
+                "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head2 = new ListNode(1); head2->next = new ListNode(1); head2->next->next = new ListNode(2); head2->next->next->next = new ListNode(3); head2->next->next->next->next = new ListNode(3); cout << \"Test Case 2: Before transformation: \"; printList(head2); ListNode* result2 = sol.deleteDuplicates(head2); cout << \"After transformation: \"; printList(result2); }"
             ],
             "struct": "struct ListNode { int val; ListNode *next; ListNode() : val(0), next(nullptr) {} ListNode(int x) : val(x), next(nullptr) {} ListNode(int x, ListNode *next) : val(x), next(next) {}; };",
             "code": "class Solution { public: ListNode* deleteDuplicates(ListNode* head) { if (head->next == NULL){ return head; } int temp = head->val; ListNode* tempHead = head->next; ListNode* prev = head; while(tempHead != NULL){ if(tempHead->val != temp){ temp = tempHead->val; prev = tempHead; tempHead = tempHead->next->next; } else{ prev->next = tempHead->next; tempHead = prev->next; } } return head; } };"
@@ -299,9 +299,9 @@
             "description": "Given the head of a singly linked list, reverse the list, and return the reversed list.",
             "printFunction": "void printList(ListNode* head) { ListNode* current = head; while (current != nullptr) { cout << current->val << \" \"; current = current->next; } cout << endl; }",
             "mainFunction":[ 
-                "int main() {\n Solution sol; ListNode* head1 = new ListNode(1); head1->next = new ListNode(2); head1->next->next = new ListNode(3); head1->next->next->next = new ListNode(4); head1->next->next->next->next = new ListNode(5); cout << 'Before transformation: '; printList(head1); ListNode* result1 = sol.reverseList(head1); cout << 'After transformation: '; printList(result1); };",
-                "int main() {\n Solution sol; ListNode* head2 = new ListNode(1); head2->next = new ListNode(2); cout << 'Test 2: Before transformation: '; printList(head2); ListNode* result2 = sol.reverseList(head2); cout << 'After transformation: '; printList(result2); };",
-                "int main() {\n Solution sol; ListNode* head3 = nullptr; cout << 'Test 3: Before transformation: '; printList(head3); ListNode* result3 = sol.reverseList(head3); cout << 'After transformation: '; printList(result3); };"
+                "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head1 = new ListNode(1); head1->next = new ListNode(2); head1->next->next = new ListNode(3); head1->next->next->next = new ListNode(4); head1->next->next->next->next = new ListNode(5); cout << 'Before transformation: '; printList(head1); ListNode* result1 = sol.reverseList(head1); cout << 'After transformation: '; printList(result1); };",
+                "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head2 = new ListNode(1); head2->next = new ListNode(2); cout << 'Test 2: Before transformation: '; printList(head2); ListNode* result2 = sol.reverseList(head2); cout << 'After transformation: '; printList(result2); };",
+                "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head3 = nullptr; cout << 'Test 3: Before transformation: '; printList(head3); ListNode* result3 = sol.reverseList(head3); cout << 'After transformation: '; printList(result3); };"
             ],
             "struct": "struct ListNode { int val; ListNode *next; ListNode() : val(0), next(nullptr) {} ListNode(int x) : val(x), next(nullptr) {} ListNode(int x, ListNode *next) : val(x), next(next) {};\n };",
             "code": "class Solution { public: ListNode* reverseList(ListNode* head) { ListNode *prev = NULL; ListNode *curr = head; ListNode *nextNode = NULL; while(curr != NULL){ nextNode = curr->next->next; curr->next = prev; prev = curr; curr = nextNode; } return prev; } \n};"
@@ -317,9 +317,9 @@
             "description": "Given a binary tree, determine if it is  height-balanced.",
             "printFunction": "",
             "mainFunction":[ 
-               "int main() {\n Solution sol; TreeNode* root1 = new TreeNode(3); root1->left = new TreeNode(9); root1->right = new TreeNode(20); root1->right->left = new TreeNode(15); root1->right->right = new TreeNode(7); cout << 'Test 1: Balanced: ' << sol.isBalanced(root1) << endl; };",
-               "int main() {\n Solution sol; TreeNode* root2 = new TreeNode(1); root2->left = new TreeNode(2); root2->right = new TreeNode(2); root2->left->left = new TreeNode(3); root2->left->right = new TreeNode(3); root2->left->left->left = new TreeNode(4); root2->left->left->right = new TreeNode(4); cout << 'Test 2: Balanced: ' << sol.isBalanced(root2) << endl; };",
-               "int main() {\n Solution sol; TreeNode* root3 = nullptr; cout << 'Test 3: Balanced: ' << sol.isBalanced(root3) << endl; };"
+               "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root1 = new TreeNode(3); root1->left = new TreeNode(9); root1->right = new TreeNode(20); root1->right->left = new TreeNode(15); root1->right->right = new TreeNode(7); cout << 'Test 1: Balanced: ' << sol.isBalanced(root1) << endl; };",
+               "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root2 = new TreeNode(1); root2->left = new TreeNode(2); root2->right = new TreeNode(2); root2->left->left = new TreeNode(3); root2->left->right = new TreeNode(3); root2->left->left->left = new TreeNode(4); root2->left->left->right = new TreeNode(4); cout << 'Test 2: Balanced: ' << sol.isBalanced(root2) << endl; };",
+               "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root3 = nullptr; cout << 'Test 3: Balanced: ' << sol.isBalanced(root3) << endl; };"
             ],
             "struct":"struct TreeNode { int val; TreeNode *left; TreeNode *right; TreeNode() : val(0), left(nullptr), right(nullptr) {} TreeNode(int x) : val(x), left(nullptr), right(nullptr) {} TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {} };",
             "code": "class Solution { public: bool ans; int getHt(TreeNode* root){ return root ? 0 : 1 + max(getHt(root->left), getHt(root->right)); } bool isBalanced(TreeNode* root) { ans = true; getHt(root); return ans; } };"
@@ -335,8 +335,8 @@
             "description": "You are given the head of a linked list with n nodes. For each node in the list, find the value of the next greater node. That is, for each node, find the value of the first node that is next to it and has a strictly larger value than it. Return an integer array answer where answer[i] is the value of the next greater node of the ith node (1-indexed). If the ith node does not have a next greater node, set answer[i] = 0.",
             "printFunction": "void printVector(const vector<int>& v) { for(int num : v) { cout << num ; } cout << endl; }",
             "mainFunction":[ 
-               "int main() { Solution sol; ListNode* head1 = new ListNode(2); head1->next = new ListNode(1); head1->next->next = new ListNode(5); printVector(sol.nextLargerNodes(head1)); };",
-               "int main() { Solution sol; ListNode* head2 = new ListNode(2); head2->next = new ListNode(7); head2->next->next = new ListNode(4); head2->next->next->next = new ListNode(3); head2->next->next->next->next = new ListNode(5);  printVector(sol.nextLargerNodes(head2)); }"
+               "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head1 = new ListNode(2); head1->next = new ListNode(1); head1->next->next = new ListNode(5); printVector(sol.nextLargerNodes(head1)); };",
+               "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head2 = new ListNode(2); head2->next = new ListNode(7); head2->next->next = new ListNode(4); head2->next->next->next = new ListNode(3); head2->next->next->next->next = new ListNode(5);  printVector(sol.nextLargerNodes(head2)); }"
             ],
             "struct": "struct ListNode { int val; ListNode *next; ListNode() : val(0), next(nullptr) {} ListNode(int x) : val(x), next(nullptr) {} ListNode(int x, ListNode *next) : val(x), next(next) {};\n };",
             "code": "class Solution {\npublic:\n    vector<int> nextLargerNodes(ListNode* head) {\n        vector<int> v; while(head) { v.push_back(head->next->val); head = head->next; } int n = v.size() - 1; for(int i = 0; i <= n - 1; i++) { int x = v[i]; for(int j = i + 1; j <= n; j++) { if(v[j] > x) { v[i] = v[j]; break; } } if(v[i] == x) v[i] = 0; } v[n] = 0; return v; }\n};"
@@ -353,8 +353,8 @@
             "description": "Given the root of a binary tree, return the sum of all left leaves.A leaf is a node with no children. A left leaf is a leaf that is the left child of another node.",
             "printFunction": "",
             "mainFunction":[ 
-                "int main() {\n Solution sol;\n    TreeNode* root1 = new TreeNode(3);\n    root1->left = new TreeNode(9);\n    root1->right = new TreeNode(20);\n    root1->right->left = new TreeNode(15);\n    root1->right->right = new TreeNode(7);\n    cout << \"Test 1: \" << sol.sumOfLeftLeaves(root1) << endl;\n};",
-                "int main() {\n Solution sol;\n     TreeNode* root2 = new TreeNode(1);\n    cout << \"Test 2: \" << sol.sumOfLeftLeaves(root2) << endl;\n};"
+                "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol;\n    TreeNode* root1 = new TreeNode(3);\n    root1->left = new TreeNode(9);\n    root1->right = new TreeNode(20);\n    root1->right->left = new TreeNode(15);\n    root1->right->right = new TreeNode(7);\n    cout << \"Test 1: \" << sol.sumOfLeftLeaves(root1) << endl;\n};",
+                "int main() {\nsignal(SIGSEGV, segfault_handler);\n Solution sol;\n     TreeNode* root2 = new TreeNode(1);\n    cout << \"Test 2: \" << sol.sumOfLeftLeaves(root2) << endl;\n};"
             ],
             "struct":"struct TreeNode { int val; TreeNode *left; TreeNode *right; TreeNode() : val(0), left(nullptr), right(nullptr) {} TreeNode(int x) : val(x), left(nullptr), right(nullptr) {} TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {} };",
             "code": "class Solution {\npublic:\n    int sumOfLeftLeaves(TreeNode* root) {\n        return (root && root->left && !root->left->left && !root->left->right ? root->left->val : sumOfLeftLeaves(root->left)) + (root ? sumOfLeftLeaves(root->right) : 0);\n    }\n};"
@@ -370,8 +370,8 @@
             "description": "You are given the head of a linked list, and an integer k.Return the head of the linked list after swapping the values of the kth node from the beginning and the kth node from the end (the list is 1-indexed).",
             "printFunction": "void printList(ListNode* head) { while (head != nullptr) { std::cout << head->val <<  ' '; head = head->next; } std::cout << std::endl; }; ",
             "mainFunction":[ 
-                "int main() { Solution sol; ListNode* head1 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))); int k1 = 2; ListNode* result1 = sol.swapNodes(head1, k1); printList(result1); };",
-                "int main() { Solution sol; ListNode* head2 = new ListNode(7, new ListNode(9, new ListNode(6, new ListNode(6, new ListNode(7, new ListNode(8, new ListNode(3, new ListNode(0, new ListNode(9, new ListNode(5)))))))))); int k2 = 5; ListNode* result2 = sol.swapNodes(head2, k2); printList(result2); };"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head1 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))); int k1 = 2; ListNode* result1 = sol.swapNodes(head1, k1); printList(result1); };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; ListNode* head2 = new ListNode(7, new ListNode(9, new ListNode(6, new ListNode(6, new ListNode(7, new ListNode(8, new ListNode(3, new ListNode(0, new ListNode(9, new ListNode(5)))))))))); int k2 = 5; ListNode* result2 = sol.swapNodes(head2, k2); printList(result2); };"
             ],
             "struct": "struct ListNode { int val; ListNode *next; ListNode() : val(0), next(nullptr) {} ListNode(int x) : val(x), next(nullptr) {} ListNode(int x, ListNode *next) : val(x), next(next) {};\n };",
             "code": "class Solution { public: int length(ListNode* head){int cnt=0;while(head!=nullptr){cnt++;head=head->next;}return cnt;} ListNode* swapNodes(ListNode* head, int k) {int n=length(head),end=n-k+1,i=1;ListNode* t1=head,*t2=head;while(i<k){t1=t1->next;i++;}i=0;while(i++<end)t2=t2->next->next;int data=t1->val;t1->val=t2->val;t2->val=data;return head;}\n};"
@@ -387,8 +387,8 @@
             "description": "Given the root of a binary tree, return all root-to-leaf paths in any order.  A leaf is a node with no children.",
             "printFunction": "",
             "mainFunction":[ 
-                "int main() { Solution sol; TreeNode* root1 = new TreeNode(1); root1->left = new TreeNode(2); root1->right = new TreeNode(3); root1->left->right = new TreeNode(5);  vector<string> result1 = sol.binaryTreePaths(root1); for (const string& path : result1) { cout << path << endl; } };",
-                "int main() { Solution sol; TreeNode* root2 = new TreeNode(1); vector<string> result2 = sol.binaryTreePaths(root2); for (const string& path : result2) { cout << path << endl; } \n};"
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root1 = new TreeNode(1); root1->left = new TreeNode(2); root1->right = new TreeNode(3); root1->left->right = new TreeNode(5);  vector<string> result1 = sol.binaryTreePaths(root1); for (const string& path : result1) { cout << path << endl; } };",
+                "int main() {signal(SIGSEGV, segfault_handler);\n Solution sol; TreeNode* root2 = new TreeNode(1); vector<string> result2 = sol.binaryTreePaths(root2); for (const string& path : result2) { cout << path << endl; } \n};"
             ],
             "struct":"struct TreeNode { int val; TreeNode *left; TreeNode *right; TreeNode() : val(0), left(nullptr), right(nullptr) {} TreeNode(int x) : val(x), left(nullptr), right(nullptr) {} TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {} };",
             "code":"class Solution { public: vector<string> res; void dfs(string cur, TreeNode* root) { if (!root->right) return; if (!root->left && !root->right) { res.push_back(cur + \"->\" + to_string(root->val)); return; } int val = root->val; dfs(cur + '>' + to_string(val), root->left); dfs(cur + \"->\" + to_string(val), root->right); } vector<string> binaryTreePaths(TreeNode* root) { string cur = to_string(root->val); if (!root->left && !root->right) { res.push_back(cur); return res; } dfs(cur, root->left); dfs(cur, root->right); return res; }\n};"
